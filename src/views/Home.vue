@@ -4,13 +4,13 @@
       <div class="navTop">
         <ul class="menu">
           <li id="x">
-            <!-- <span>x</span> -->
+            <span>x</span>
           </li>
           <li id="minus">
-            <!-- <span>-</span> -->
+            <span>-</span>
           </li>
           <li id="plus">
-            <!-- <span>+</span> -->
+            <span>+</span>
           </li>
         </ul>
         <!--计算区域开始-->
@@ -20,26 +20,26 @@
         <!--计算区域结束-->
         <!--操作区域开始-->
         <div class="optionScope">
-          <div v-if="true" class="operations">AC</div>
-          <div v-else class="operations">C</div>
-          <div class="operations">+/-</div>
-          <div class="operations">%</div>
-          <div class="Conversion">÷</div>
-          <div class="Digital">7</div>
-          <div class="Digital">8</div>
-          <div class="Digital">9</div>
-          <div class="Conversion">x</div>
-          <div class="Digital">4</div>
-          <div class="Digital">5</div>
-          <div class="Digital">6</div>
-          <div class="Conversion">-</div>
-          <div class="Digital">1</div>
-          <div class="Digital">2</div>
-          <div class="Digital">3</div>
-          <div class="Conversion">+</div>
-          <div style="width:114px" class="Digital">0</div>
-          <div class="Digital">.</div>
-          <div class="Conversion">=</div>
+          <div v-if="operaStats" class="operations" @click="AC">AC</div>
+          <div v-else class="operations" @click="C">C</div>
+          <div class="operations" @click="addSubtract">+/-</div>
+          <div class="operations" @click="percentEncoding">%</div>
+          <div class="Conversion" @click="addition">÷</div>
+          <div class="Digital" @click="numSeven">7</div>
+          <div class="Digital" @click="numEight">8</div>
+          <div class="Digital" @click="numNine">9</div>
+          <div class="Conversion" @click="ride">x</div>
+          <div class="Digital" @click="numFour">4</div>
+          <div class="Digital" @click="numFive">5</div>
+          <div class="Digital" @click="numSix">6</div>
+          <div class="Conversion" @click="minus">-</div>
+          <div class="Digital" @click="numOne">1</div>
+          <div class="Digital" @click="numTwo">2</div>
+          <div class="Digital" @click="three">3</div>
+          <div class="Conversion" @click="plus">+</div>
+          <div style="width:114px" class="Digital" @click="zero">0</div>
+          <div class="Digital dot" @click="dot">.</div>
+          <div class="Conversion" @click="equal">=</div>
         </div>
         <!--操作区域结束-->
       </div>
@@ -52,12 +52,135 @@ export default {
   name: "Home",
   data() {
     return {
-      num: 0
+      num: 0,
+      operator: null,
+      numArr: []
+    };
+  },
+  computed: {
+    operaStats() {
+      return this.num === 0 ? true : false;
+    }
+  },
+  methods: {
+    AC() {},
+    C() {
+      this.num = 0;
+      this.operator = null;
+      this.numArr = [];
+    },
+    addSubtract() {
+      this.operator = "+/-";
+    },
+    percentEncoding() {
+      this.operator = "%";
+    },
+    addition() {
+      this.operator = "÷";
+    },
+    numSeven() {
+      if (!this.operator) this.num = 7;
+      if (!this.operator) {
+        this.numArr.push(7);
+        let temporary = this.numArr.join("");
+        this.num = temporary;
+      }
+    },
+    numEight() {
+      if (!this.operator) this.num = 8;
+      if (!this.operator) {
+        this.numArr.push(8);
+        let temporary = this.numArr.join("");
+        this.num = temporary;
+      }
+    },
+    numNine() {
+      if (!this.operator) this.num = 9;
+      if (!this.operator) {
+        this.numArr.push(9);
+        let temporary = this.numArr.join("");
+        this.num = temporary;
+      }
+    },
+    ride() {
+      this.operator = "x";
+    },
+    numFour() {
+      if (!this.operator) this.num = 4;
+      if (!this.operator) {
+        this.numArr.push(4);
+        let temporary = this.numArr.join("");
+        this.num = temporary;
+      }
+    },
+    numFive() {
+      if (!this.operator) this.num = 5;
+      if (!this.operator) {
+        this.numArr.push(5);
+        let temporary = this.numArr.join("");
+        this.num = temporary;
+      }
+    },
+    numSix() {
+      if (!this.operator) this.num = 6;
+      if (!this.operator) {
+        this.numArr.push(6);
+        let temporary = this.numArr.join("");
+        this.num = temporary;
+      }
+    },
+    minus() {
+      this.operator = "-";
+    },
+    numOne() {
+      if (!this.operator) this.num = 1;
+      if (!this.operator) {
+        this.numArr.push(1);
+        let temporary = this.numArr.join("");
+        this.num = temporary;
+      }
+    },
+    numTwo() {
+      if (!this.operator) this.num = 2;
+      if (!this.operator) {
+        this.numArr.push(2);
+        let temporary = this.numArr.join("");
+        this.num = temporary;
+      }
+    },
+    three() {
+      if (!this.operator) this.num = 3;
+      if (!this.operator) {
+        this.numArr.push(3);
+        let temporary = this.numArr.join("");
+        this.num = temporary;
+      }
+    },
+    plus() {
+      this.operator = "+";
+    },
+    zero() {
+      if (!this.operator) this.num = 0;
+      if (!this.operator) {
+        this.numArr.push(0);
+        let temporary = this.numArr.join("");
+        this.num = temporary;
+      }
+    },
+    dot() {},
+    equal() {}
+  },
+  beforeCreate() {
+    document.onselectstart = () => {
+      return false;
     };
   }
 };
 </script>
 <style scoped>
+.home {
+  cursor: default;
+}
 * {
   list-style: none;
   padding: 0px;
@@ -82,7 +205,26 @@ ul li {
   width: 12px;
   margin-right: 5px;
   margin-top: 3px;
+  position: relative;
 }
+
+ul li span {
+  position: absolute;
+  top: -3px;
+  left: 1px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #7c7d7f;
+  display: none;
+}
+li span:hover {
+  display: inline;
+}
+
+.dot {
+  line-height: 50px;
+}
+
 #x {
   margin-left: 5px;
   background-color: #ff223a;
@@ -100,6 +242,7 @@ ul li {
   height: 63px;
   background-color: #57595b;
   position: relative;
+  overflow: hidden;
 }
 .numberCont {
   font-size: 40px;
@@ -127,5 +270,14 @@ ul li {
 }
 .Digital {
   background-color: #7c7d7f;
+}
+.operations:active {
+  background-color: #b3b4b6;
+}
+.Digital:active {
+  background-color: #b5b5b7;
+}
+.Conversion:active {
+  background-color: #d47900;
 }
 </style>
