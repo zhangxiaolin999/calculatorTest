@@ -24,22 +24,32 @@
           <div v-else class="operations" @click="C">C</div>
           <div class="operations" @click="addSubtract">+/-</div>
           <div class="operations" @click="percentEncoding">%</div>
-          <div class="Conversion" @click="addition">÷</div>
+          <div class="Conversion" @click="addition">
+            <div class="symbol">÷</div>
+          </div>
           <div class="Digital" @click="numSeven">7</div>
           <div class="Digital" @click="numEight">8</div>
           <div class="Digital" @click="numNine">9</div>
-          <div class="Conversion" @click="ride">x</div>
+          <div class="Conversion" @click="ride">
+            <div class="symbol">x</div>
+          </div>
           <div class="Digital" @click="numFour">4</div>
           <div class="Digital" @click="numFive">5</div>
           <div class="Digital" @click="numSix">6</div>
-          <div class="Conversion" @click="minus">-</div>
+          <div class="Conversion" @click="minus">
+            <div class="symbol">-</div>
+          </div>
           <div class="Digital" @click="numOne">1</div>
           <div class="Digital" @click="numTwo">2</div>
           <div class="Digital" @click="three">3</div>
-          <div class="Conversion" @click="plus">+</div>
+          <div class="Conversion" @click="plus">
+            <div class="symbol">+</div>
+          </div>
           <div style="width:114px" class="Digital" @click="zero">0</div>
           <div class="Digital dot" @click="dot">.</div>
-          <div class="Conversion" @click="equal">=</div>
+          <div class="Conversion" @click="equal">
+            <div class="symbol">=</div>
+          </div>
         </div>
         <!--操作区域结束-->
       </div>
@@ -79,6 +89,7 @@ export default {
       this.operator = "÷";
     },
     numSeven() {
+      if (this.num.length >= 10 && this.operator === "") return;
       if (!this.operator) this.num = 7;
       if (!this.operator) {
         this.numArr.push(7);
@@ -87,6 +98,7 @@ export default {
       }
     },
     numEight() {
+      if (this.num.length >= 10 && this.operator === "") return;
       if (!this.operator) this.num = 8;
       if (!this.operator) {
         this.numArr.push(8);
@@ -95,6 +107,7 @@ export default {
       }
     },
     numNine() {
+      if (this.num.length >= 10 && this.operator === "") return;
       if (!this.operator) this.num = 9;
       if (!this.operator) {
         this.numArr.push(9);
@@ -106,6 +119,7 @@ export default {
       this.operator = "x";
     },
     numFour() {
+      if (this.num.length >= 10 && this.operator === "") return;
       if (!this.operator) this.num = 4;
       if (!this.operator) {
         this.numArr.push(4);
@@ -114,6 +128,7 @@ export default {
       }
     },
     numFive() {
+      if (this.num.length >= 10 && this.operator === "") return;
       if (!this.operator) this.num = 5;
       if (!this.operator) {
         this.numArr.push(5);
@@ -122,6 +137,7 @@ export default {
       }
     },
     numSix() {
+      if (this.num.length >= 10 && this.operator === "") return;
       if (!this.operator) this.num = 6;
       if (!this.operator) {
         this.numArr.push(6);
@@ -133,6 +149,7 @@ export default {
       this.operator = "-";
     },
     numOne() {
+      if (this.num.length >= 10 && this.operator === "") return;
       if (!this.operator) this.num = 1;
       if (!this.operator) {
         this.numArr.push(1);
@@ -141,6 +158,7 @@ export default {
       }
     },
     numTwo() {
+      if (this.num.length >= 10 && this.operator === "") return;
       if (!this.operator) this.num = 2;
       if (!this.operator) {
         this.numArr.push(2);
@@ -149,6 +167,7 @@ export default {
       }
     },
     three() {
+      if (this.num.length >= 10 && this.operator === "") return;
       if (!this.operator) this.num = 3;
       if (!this.operator) {
         this.numArr.push(3);
@@ -160,6 +179,7 @@ export default {
       this.operator = "+";
     },
     zero() {
+      if (this.num.length >= 10 && this.operator === "") return;
       if (!this.operator) this.num = 0;
       if (!this.operator) {
         this.numArr.push(0);
@@ -266,6 +286,7 @@ li span:hover {
   background-color: #646568;
 }
 .Conversion {
+  position: relative;
   background-color: #ff9a00;
 }
 .Digital {
@@ -279,5 +300,8 @@ li span:hover {
 }
 .Conversion:active {
   background-color: #d47900;
+}
+.Conversion .symbol {
+  position: absolute;
 }
 </style>
